@@ -1,0 +1,125 @@
+/* Product List Styles */
+.product-list-container {
+  padding: 20px 0;
+}
+
+.product-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-list-header h2 {
+  color: #2c3e50;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.product-controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category-filter,
+.sort-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-filter label,
+.sort-options label {
+  font-weight: 500;
+  color: #555;
+  font-size: 14px;
+}
+
+.category-filter select,
+.sort-options select {
+  padding: 8px 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.category-filter select:focus,
+.sort-options select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.no-products {
+  text-align: center;
+  padding: 60px 20px;
+  color: #7f8c8d;
+}
+
+.no-products p {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .product-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .product-list-header h2 {
+    font-size: 24px;
+  }
+  
+  .product-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .category-filter,
+  .sort-options {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .category-filter select,
+  .sort-options select {
+    flex: 1;
+    max-width: 200px;
+  }
+  
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .product-list-container {
+    padding: 15px 0;
+  }
+}

@@ -1,0 +1,74 @@
+.payment-failed-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.failed-content {
+  background: #fff;
+  padding: 60px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 560px;
+  width: 100%;
+}
+
+.failed-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #e74c3c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 20px;
+}
+
+.failed-content h1 {
+  color: #e74c3c;
+  font-size: 28px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.failed-content p {
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.failed-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: #3498db;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .failed-content {
+    padding: 40px 20px;
+  }
+}
+
+
