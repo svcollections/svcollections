@@ -6,6 +6,7 @@ import './ProductList.css';
 const ProductList = ({ selectedCategory = 'All', onCategoryChange }) => {
   const [sortBy, setSortBy] = useState('name');
   const [baseProducts, setBaseProducts] = useState(products);
+  const [activeSelection, setActiveSelection] = useState({ productId: null, size: '' });
 
   const handleSort = (sortType) => {
     setSortBy(sortType);
@@ -73,7 +74,12 @@ const ProductList = ({ selectedCategory = 'All', onCategoryChange }) => {
       
       <div className="product-grid">
         {filteredAndSortedProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={`product-${product.id}`}
+            product={product}
+            selectedSize={activeSelection.productId === product.id ? activeSelection.size : ''}
+            onSelectSize={(size) => setActiveSelection({ productId: product.id, size })}
+          />
         ))}
       </div>
       

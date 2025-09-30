@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
-const ProductCard = ({ product }) => {
-  const [selectedSize, setSelectedSize] = useState('');
+const ProductCard = ({ product, selectedSize: controlledSelectedSize, onSelectSize }) => {
+  const [localSelectedSize, setLocalSelectedSize] = useState('');
   const [showSizeError, setShowSizeError] = useState(false);
   const { addToCart } = useCart();
+
+  // Reset selected size when product changes
+  useEffect(() => {
+    if (controlledSelectedSize === undefined) {
+      setLocalSelectedSize('');
+      setShowSizeError(false);
+    } else {
+      setShowSizeError(false);
+    }
+  }, [product.id]);
+
+  const selectedSize = controlledSelectedSize !== undefined ? controlledSelectedSize : localSelectedSize;
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -16,7 +28,9 @@ const ProductCard = ({ product }) => {
     
     addToCart(product, selectedSize);
     setShowSizeError(false);
-    setSelectedSize('');
+    if (controlledSelectedSize === undefined) {
+      setLocalSelectedSize('');
+    }
   };
 
   return (
@@ -46,7 +60,11 @@ const ProductCard = ({ product }) => {
                 key={size}
                 className={`size-btn ${selectedSize === size ? 'selected' : ''}`}
                 onClick={() => {
-                  setSelectedSize(size);
+                  if (onSelectSize) {
+                    onSelectSize(size);
+                  } else {
+                    setLocalSelectedSize(size);
+                  }
                   setShowSizeError(false);
                 }}
               >

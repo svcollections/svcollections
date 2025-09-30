@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { products } from '../data/products';
@@ -12,6 +12,12 @@ const ProductDetail = () => {
   const [showSizeError, setShowSizeError] = useState(false);
 
   const product = products.find(p => p.id === parseInt(id));
+
+  // Reset selected size when product changes
+  useEffect(() => {
+    setSelectedSize('');
+    setShowSizeError(false);
+  }, [id]);
 
   if (!product) {
     return (
